@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Act. 3.3 Inicio del desarrollo',
+        title: 'Act. 3.4 Utilización de Widgets',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 134, 46, 175)),
@@ -41,19 +41,22 @@ class MyHomePage extends StatelessWidget {
     var pair = appState.current;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Text('Bienvenido a Flutter'),
-          Text('Hola Mundo'),
-          BigCard(pair: pair),
-
-          ElevatedButton(
-            onPressed: () {
-              appState.getNext();
-            },
-            child: Text('Next'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Bienvenido a Flutter'),
+            Text('Hola Mundo'),
+            BigCard(pair: pair),
+        
+            ElevatedButton(
+              onPressed: () {
+                appState.getNext();
+              },
+              child: Text('Next'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -79,9 +82,11 @@ class BigCard extends StatelessWidget {
       color: theme.colorScheme.primary,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
+        
         child: Text(
           pair.asLowerCase,
           style: style,
+          semanticsLabel: "${pair.first} ${pair.second}",
         ),
       ),
     );
